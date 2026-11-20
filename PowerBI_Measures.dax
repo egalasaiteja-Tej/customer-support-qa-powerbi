@@ -1,0 +1,24 @@
+// Create each item below using Modeling > New measure.
+// Measures respond to the selected month, lead, queue and other visual filters.
+
+Audit Count = COUNT('Cleaned_Audit_Data'[QA_Score])
+
+Average QA = AVERAGE('Cleaned_Audit_Data'[QA_Score])
+
+QA Target = 90
+
+At-Target Rate = AVERAGE('Cleaned_Audit_Data'[QA_At_Target_Flag])
+
+FCR Rate = AVERAGE('Cleaned_Audit_Data'[FCR_Flag])
+
+Average AHT Seconds = AVERAGE('Cleaned_Audit_Data'[AHT_Seconds])
+
+Critical Error Audits = SUM('Cleaned_Audit_Data'[Critical_Error_Flag])
+
+Critical Error Rate = DIVIDE([Critical Error Audits], [Audit Count], 0)
+
+Repeat Defect Audits = SUM('Cleaned_Audit_Data'[Repeat_Defect_Flag])
+
+Coaching Audits = SUM('Cleaned_Audit_Data'[Coaching_Flag])
+
+QA Gap to Target = [Average QA] - [QA Target]
